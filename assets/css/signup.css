@@ -1,0 +1,151 @@
+/* signup.css */
+
+/* Main container styles */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  
+  background-color: #f2f2f2;
+}
+
+/* Company logo styles */
+.companyLogo img {
+  width: 100px;
+  height: 100px;
+  border-radius: 40%;
+  animation: rotate 20s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form input styles */
+.formInput {
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 1s ease;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formInput h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333333;
+}
+
+.formInput input[type="Name"],
+.formInput input[type="email"],
+.formInput input[type="password"],
+.formInput input[type="confirmPassword"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #dddddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.formInput input[type="Name"]:focus,
+.formInput input[type="email"]:focus,
+.formInput input[type="password"]:focus,
+.formInput input[type="confirmPassword"]:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.formInput .buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.formInput .submitButtons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formInput .submitButtons button:hover {
+  background-color: #45a049;
+}
+
+/* Additional styles */
+.extraStuff {
+  margin-top: 20px;
+  text-align: center;
+  color: #666666;
+}
+
+.extraStuff a {
+  color: #0000ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.extraStuff a:hover {
+  color: #0000cc;
+}
+
+@media screen and (max-width: 480px) {
+  /* Responsive styles for small screens */
+  .companyLogo img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .formInput {
+    padding: 20px;
+  }
+
+  .formInput h1 {
+    font-size: 20px;
+  }
+
+  .formInput input[type="Name"],
+  .formInput input[type="email"],
+  .formInput input[type="password"],
+  .formInput input[type="confirmPassword"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .formInput .buttons {
+    flex-direction: column;
+  }
+
+  .formInput .submitButtons button {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+  }
+}

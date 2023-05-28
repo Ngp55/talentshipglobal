@@ -1,17 +1,25 @@
-<html>
-    <head>
-        <title>
-            <%= title %>
-        </title>
-    </head>
-  
-    <body>
-        <%- include('_header'); %>
+<link rel="stylesheet" href="/css/signin.css">
 
+ 
+<div class="mainContainer ">
+    <div class="companyLogo">
+        <img src="../images/demo.jpg" id="logo-pic">
+    </div>
 
+    <div class="formInput">
+        <h1> Welcome </h1>
+        <form method="POST" action="/users/create-session">
+            <input type="email" name="email" placeholder="Enter email" required><br>
+            <input type="password" name="password" placeholder="Enter password" required><br>
+            <div class='buttons'>
+                <div class="forgetPassword"><a href="/users/forgetPassword"> ForgetPassword </a></div>
+                <div class='submitButtons'><button type="submit">Sign In</button></div>
+        </form>
+    </div>
 
-        <%- include('_footer'); %>
-    </body>
-    
-
-</html>
+    <div class="extraStuff">
+        <small> Don't have account ?</small>
+        <a href="/users/sign-up"> Register User</a>
+    </div>
+</div>
+</div>
