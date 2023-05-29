@@ -2,12 +2,17 @@ const User = require('../models/user');
 
 module.exports.user = function(req, res){
 
-    return res.render('user_profile',{
+    return res.render('user_profiles',{
         title:"Users Lists"
     })
 };
 // render the signup page
 module.exports.signUp = function (req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/userlist');
+    }
+
+
 
     return res.render('sign_up',{
         title:"Sign Up | EmpReview System"
@@ -16,6 +21,10 @@ module.exports.signUp = function (req, res){
 
 // render the signin page
 module.exports.signIn = function (req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/userlist');
+    }
+
 
     return res.render('sign_in',{
         title:"Sign In | EmpReview System"
@@ -67,5 +76,33 @@ module.exports.create = async function(req, res) {
 
 //sign in and create session
 module.exports.createSession = function(req, res){
+    return res.redirect('/');
 
 }
+
+// module.exports.destroySession = function(req ,res){
+//     // req.logout();
+//     req.logout(function(err) {
+//         if (err) {
+//           console.log('Error in logging out:', err);
+//           return;
+//         }
+    
+//         // Clear the session cookie
+//         res.clearCookie('connect.sid');
+
+//     return res.redirect('/');
+// }
+module.exports.destroySession = function(req, res) {
+    req.logout(function(err) {
+      if (err) {
+        console.log('Error in logging out:', err);
+        return;
+      }
+  
+      // Clear the session cookie
+      res.clearCookie('connect.sid');
+      return res.redirect('/');
+    });
+  };
+  
