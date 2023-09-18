@@ -1,0 +1,102 @@
+
+<% if (locals.user){ %>
+  <%if(locals.user.isAdmin){%>
+    <head>
+  
+  
+      <link rel="stylesheet" type="text/css" href="/css/addpost.css">
+      <script src="/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+          tinymce.init({
+            selector: '#mytextarea',
+            plugins:[
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'prewiew', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media', 
+            'table', 'emoticons', 'template', 'codesample'
+        ],
+        toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |' + 
+        'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+        'forecolor backcolor emoticons',
+        menu: {
+            favs: {title: 'menu', items: 'code visualaid | searchreplace | emoticons'}
+        },
+        menubar: 'favs file edit view insert format tools table',
+        content_style: 'body{font-family:Helvetica,Arial,sans-serif; font-size:16px}'
+          });
+        </script>
+    </head>
+    <body>
+     
+      <div class="container-fluid py-4">
+        <div class="row">
+          <div class="container">
+            <h2>Add Post</h2>
+            <form>
+                <div class="form-group">
+                    <label for="text-input">Post Title</label>
+                    <input type="text" id="text-input" name="textinput" placeholder="Please write the title of the post">
+                </div>
+                <div class="form-group">
+                    <label for="datetime-input">Date & Time Input</label>
+                    <input type="datetime-local" id="datetime-input" name="datetimeinput" required>
+                </div>
+                <div class="form-group">
+                  <label for="catnames">Choose News Category</label> 
+                    <select name="catnames" id="catnames"> 
+                        <option value="polity">Polity</option> 
+                        <option value="crime">अपराध</option> 
+                        <option value="farming">खेत-खलिहान</option> 
+                        <option value="market">मंडी बाजार</option>
+                        <option value="game">खेल</option>
+                        <option value="culture">संस्कृति</option>
+                        <option value="entertainment">मनोरंजन</option> 
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mytextarea">Content Editable Area</label>
+                    <textarea id="mytextarea" name="textarea" placeholder="Write the content" rows="12" cols="15" required></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="button_eff">Previous Article</button>
+                    <button type="reset" class="button_eff sav">Save</button>
+                    <button type="button" class="button_eff del">Delete</button>
+                    <button type="button" class="button_eff">New Article</button>
+                </div>
+            </form>
+        </div>  
+    
+        </div>
+        
+      </div>
+    
+      
+      
+     
+    </body>
+    
+
+<%}else{%>    
+      
+  <div class="logOut"> 
+  
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <span class="nameOfUser"><img src="/images/wrongplace.jpg"><%= locals.user.name%>  </span>
+        <a href="/users/sign-out" > <small>LogOut</small> </a> 
+
+      </div>
+    </div>
+
+</div>
+<%}%>
+
+<%} else { %>
+<div class="noUser">
+  <ul>
+      <li> <a href="/users/sign-in"> Sign-In </a> </li>
+      <li>  <a href="/users/sign-up"> Sign-Up </a> </li>
+  </ul>
+</div>
+
+<%}%>      

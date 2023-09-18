@@ -11,6 +11,8 @@ router.get('/', homeController.home);
 // router.get('/emp', empController.employee);
 
 router.use('/users', require('./users'));
+router.use('/admin', require('./admin'));
+
 
 console.log('Index router loaded');
 

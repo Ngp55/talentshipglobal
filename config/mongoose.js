@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/EmpReviewSys');
+mongoose.connect('mongodb://localhost/ThinkitToday');
 
 const db = mongoose.connection;
 

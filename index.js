@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
+const path = require('path');
 
 const port = 9000;
 
@@ -37,13 +38,21 @@ app.set('layout extractScripts', true);
 
 
 app.set('view engine', 'ejs');
-app.set('views', './views');
-
+app.set('views', path.join(__dirname, './views'));
+ 
+//app.set('views', './views');
+//app.set('views','./views/admin');
+// app.set('views', [
+//     path.join('./views'),
+//     path.join('./admin'), // Add additional view directories here
+//   ]);
+// app.set('view engine', 'ejs');
+ 
 //mongo store is used to store the session cookie in the db
 
 
 app.use(session({
-    name: 'EmpRSystem',
+    name: 'ThinkitToday',
     // todo change secret before 
     secret:'boloharharmahadevkijay',
     saveUninitialized: false,
@@ -52,7 +61,7 @@ app.use(session({
         maxAge : (1000 * 60 * 100)
     },
     store: MongoStore.create({
-            mongoUrl:'mongodb://localhost/EmpReviewSys',
+            mongoUrl:'mongodb://localhost/ThinkitToday',
             autoRemove:"disabled"
     },
     function(err){

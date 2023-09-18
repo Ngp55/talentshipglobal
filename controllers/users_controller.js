@@ -2,8 +2,8 @@ const User = require('../models/user');
 
 module.exports.user = function(req, res){
 
-    return res.render('user_profiles',{
-        title:"Users Lists"
+    return res.render('user/user_profiles',{
+        title:"Profile"
     })
 };
 // render the signup page
@@ -15,7 +15,7 @@ module.exports.signUp = function (req, res){
 
 
     return res.render('sign_up',{
-        title:"Sign Up | EmpReview System"
+        title:"Sign Up | ThinkitToday"
     })
 };
 
@@ -27,7 +27,7 @@ module.exports.signIn = function (req, res){
 
 
     return res.render('sign_in',{
-        title:"Sign In | EmpReview System"
+        title:"Sign In | ThinkitToday"
     })
 };
 
@@ -93,6 +93,44 @@ module.exports.createSession = function(req, res){
 
 //     return res.redirect('/');
 // }
+
+// Render Forget Password page
+module.exports.forgetPasswordPage = function (req, res) {
+    return res.render('forget_password', {
+        title: 'Forget Password | ERSystem'
+    });
+}
+
+
+// Update user's password with newly created password
+module.exports.forgetPasswordLink = async function (req, res) {
+    let user = await User.findOne({ email: req.body.email });
+    if (!user) {
+        return res.redirect('/users/signUp');
+    }
+    if (req.body.password == req.body.confirmPassword) {
+        req.flash('success', 'Password Changed :)');
+        user.password = req.body.password;
+        await user.updateOne({ password: req.body.password });
+        return res.redirect('/users/sign-in');
+    }
+    return res.redirect('back');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports.destroySession = function(req, res) {
     req.logout(function(err) {
       if (err) {
@@ -106,3 +144,12 @@ module.exports.destroySession = function(req, res) {
     });
   };
   
+
+  module.exports.userdashboard = function(req, res){
+    // console.log(req.cookies);
+    // res.cookie('user_id', 24);
+    return res.render('user/user_dashboard',{
+        title: "UserDashboard || ThinkitToday",
+        body:"UserDashboard"
+    });
+} 
