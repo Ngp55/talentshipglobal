@@ -1,5 +1,7 @@
 const User = require('../models/user');
 
+const FormData = require('../models/formdata');
+
 module.exports.user = function(req, res){
 
     return res.render('user/user_profiles',{
@@ -153,3 +155,56 @@ module.exports.destroySession = function(req, res) {
         body:"UserDashboard"
     });
 } 
+
+module.exports.formshow = function(req, res){
+
+    return res.render('formfile',{
+        title:"formData"
+    })
+};
+
+module.exports.saveform = async function (req, res) {
+try {
+    // Validate the data
+    const {  textField1,textField2, checkbox1, checkbox2,textarea } = req.body;
+    console.log(req.body);
+    const formdata = new FormData({
+        textField1:{
+            type:String
+          },
+        textField2:{
+            type:String
+          },
+        checkbox1:{
+            type:Boolean
+          },
+         checkbox2:{
+            type:Boolean
+          },
+          textarea:{
+            type:String
+          },
+      user: req.user 
+    });
+  
+    // Save the article
+    const savedFormData = await formdata.save();
+  
+    res.status(201).json({ message: 'Article saved successfully', formdata: savedFormData });
+  } catch (error) {
+    // if (error.name === 'ValidationError') {
+    //   // Handle validation errors
+    //   const validationErrors = {};
+    //   for (const field in error.errors) {
+    //     validationErrors[field] = error.errors[field].message;
+    //   }
+    //   res.status(400).json({ error: 'Validation failed', validationErrors });
+    // } else {
+    //   // Handle other errors
+    //   console.error('Error saving article:', error);
+    //   res.status(500).json({ error: 'Failed to save the article' });
+    // }
+    console.error('Error saving article:', error);
+      res.status(500).json({ error: 'Failed to save the article' });
+  }
+};

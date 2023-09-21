@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser')
 const app = express();
 const path = require('path');
 
@@ -16,9 +17,11 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(express.urlencoded());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 
 app.use(express.static('./assets'));
@@ -38,8 +41,9 @@ app.set('layout extractScripts', true);
 
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, './views'));
- 
+// app.set('views', path.join(__dirname, './views'));
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/admin/') ]);
+//app.set('views', path.join(__dirname, 'views'));
 //app.set('views', './views');
 //app.set('views','./views/admin');
 // app.set('views', [
