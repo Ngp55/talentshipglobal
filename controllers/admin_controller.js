@@ -1,8 +1,9 @@
 const Article = require('../models/article');
+const sanitizeHtml = require('sanitize-html');
 
 module.exports.dashboard = function(req, res){
   if(req.isAuthenticated() && req.user.isAdmin){ // Check if the user is authenticated and has admin privileges
-      return res.render('admin_addPost',{
+      return res.render('admin/admin_dashboard',{
         title: "Admin Dashboard || ThinkitToday",
         layout:"admin_layout"
   });
@@ -17,7 +18,7 @@ module.exports.addPost = (req, res) => {
   
  
   if(req.isAuthenticated() && req.user.isAdmin){ // Check if the user is authenticated and has admin privileges
-    return  res.render('admin_addPost',{
+    return  res.render('admin/admin_addPost',{
       title: "AddPost || ThinkitToday",
       layout:"admin_layout"
 });
@@ -33,7 +34,7 @@ module.exports.postList = (req, res) => {
   
   
   if(req.isAuthenticated() && req.user.isAdmin){ // Check if the user is authenticated and has admin privileges
-    return  res.render('admin_postLists',{
+    return  res.render('adminw/admin_postLists',{
       title: "Post List || ThinkitToday",
       layout:"admin_layout"
 });
@@ -137,37 +138,37 @@ module.exports.createArticle = async function (req, res) {
   // } catch (error) {
   //   res.status(500).json({ error: 'Failed to save the article' });
   // }
+  const { txtinput,datetimeinput,catnames,textarea} =req.body;
+    console.log("########################");
+    console.log(typeof txtinput);console.log(typeof datetimeinput);console.log(typeof catnames);console.log(typeof textarea);
+    console.log("########################");
+    console.log(req.body);
+    //To sanitize the html tags that malpractise can't be done
+    const sanitizedContent = sanitizeHtml(textarea, {
+      allowedTags: [...sanitizeHtml.defaults.allowedTags],
+      allowedAttributes: {},
+    });
+
+    if (!txtinput || !textarea) {
+      return res.status(400).json({ message: 'Title and content are required.' });
+    }
+  
   try {
-    // Validate the data
-    const { txtinput,
-      datetimeinput,
-      catnames,
-      textarea} =req.body;
-
-      
-      console.log("########################");
-
-      console.log(typeof txtinput);
-      console.log(typeof datetimeinput);
-      console.log(typeof catnames);
-      console.log(typeof textarea);
-
-
-      console.log("########################");
-
-      console.log(req.body);
+  
     const article = new Article({
       txtinput,
       datetimeinput,
       catnames,
-      textarea,
+      textarea: sanitizedContent,
       user: req.user 
     });
   
     // Save the article
-    const savedArticle = await article.save();
+    const savedArticle = 
+    await article.save();
   
     res.status(201).json({ message: 'Article saved successfully', article: savedArticle });
+    
   } catch (error) {
     if (error.name === 'ValidationError') {
       // Handle validation errors

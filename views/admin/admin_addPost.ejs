@@ -7,7 +7,7 @@
       <script src="/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
         <script>
           tinymce.init({
-            selector: '#mytextarea',
+            selector: '#textarea',
             plugins:[
             'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'prewiew', 'anchor', 'pagebreak',
             'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media', 
@@ -35,15 +35,15 @@
             <h2>Add Post</h2>
             <form method="POST" action="/admin/save-article" novalidate>
               <div class="form-group">
-                  <label for="txtinput">Article Title</label>
+                  <label for="txtinput">Article Title *</label>
                   <input type="text" id="txtinput" name="txtinput" placeholder="Enter the title" required>
               </div>
               <div class="form-group">
-                  <label for="datetimeinput">Publication Date & Time</label>
+                  <label for="datetimeinput">Publication Date & Time  *</label>
                   <input type="datetime-local" id="datetimeinput" name="datetimeinput" required>
               </div>
               <div class="form-group">
-                  <label for="catnames">Category</label>
+                  <label for="catnames">Category  *</label>
                   <select id="catnames" name="catnames" required>
                       <option value="polity">Polity</option>
                       <option value="crime">Crime</option>
@@ -55,11 +55,14 @@
                   </select>
               </div>
               <div class="form-group">
-                  <label for="textarea">Article Content</label>
-                  <textarea id="textarea" name="textarea" placeholder="Write your article here" rows="10" required></textarea>
+                  <label for="textarea">Article Content  *</label>
+                  <textarea id="textarea" name="textarea" placeholder="Write your article here" rows="20" colrequired></textarea>
               </div>
               <div class="form-group">
-                  <button type="submit">Submit</button>
+                  <a><button type="button" class="button_eff">Previous Article</button></a>
+                  <button type="submit" class="button_eff sav">Save</button>
+                  <a ><button type="button" class="button_eff del">Delete</button></a>
+                  <a><button type="button" class="button_eff">New Article</button></a>
               </div>
           </form>
       

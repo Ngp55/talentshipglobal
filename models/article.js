@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-    const domPurifier = require('dompurify');
-    const {JSDOM} = require('jsdom');
-    const htmlPurify = domPurifier(new JSDOM().window);
+    // const domPurifier = require('dompurify');
+    // const {JSDOM} = require('jsdom');
+    // const htmlPurify = domPurifier(new JSDOM().window);
 
-    const stripHtml = require('string-strip-html');
+    // const stripHtml = require('string-strip-html');
     //const stripHtml = require('string-strip-html');
    
     //const stripHtml = import('string-strip-html')
@@ -14,7 +14,8 @@ const mongoose = require('mongoose');
 // Define the schema for storing habits entered by user
 const articleSchema = new mongoose.Schema({
     txtinput: {
-        type: String
+        type: String,
+        required:true
     },
    
     datetimeinput: {
@@ -22,15 +23,14 @@ const articleSchema = new mongoose.Schema({
         required: true
     },
     textarea: {
-        type: String
+        type: String,
+        required:true
     },
     catnames: {
         type: String,
-        enum: ['polity','crime','farming','market','game','culture','entertainment']
+        enum: ['polity','crime','farming','market','game','culture','entertainment'],
+        required:true
         
-    },
-    snippet:{
-        type:String
     },
     user:{
         type: mongoose.Schema.Types.ObjectId,
@@ -41,13 +41,13 @@ const articleSchema = new mongoose.Schema({
     timestamp: true,
     }
 );
-articleSchema.pre('validate',function(next){
-    if(this.textarea){
-        this.textarea = htmlPurify.sanitize(this.textarea);
-        this.snippet = stripHtml(this.textarea.substring(0,200)).result
-    }
+// articleSchema.pre('validate',function(next){
+//     if(this.textarea){
+//         this.textarea = htmlPurify.sanitize(this.textarea);
+//         this.snippet = stripHtml(this.textarea.substring(0,200)).result
+//     }
     
-})
+// })
 
 // Create the Habit model using the schema
 const Article = mongoose.model('Article', articleSchema);

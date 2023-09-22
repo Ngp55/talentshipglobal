@@ -42,9 +42,10 @@ app.set('layout extractScripts', true);
 
 app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, './views'));
-app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/admin/') ]);
+app.set('views', './views');
+//app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/admin/') ]);
 //app.set('views', path.join(__dirname, 'views'));
-//app.set('views', './views');
+
 //app.set('views','./views/admin');
 // app.set('views', [
 //     path.join('./views'),
