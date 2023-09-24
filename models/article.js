@@ -1,4 +1,12 @@
+
 const mongoose = require('mongoose');
+
+// const multer = require('multer');
+
+// const path = require('path');
+// const ARTICLEIMG_PATH = path.join('/uploads/articles/photos')
+
+
 
     // const domPurifier = require('dompurify');
     // const {JSDOM} = require('jsdom');
@@ -32,6 +40,9 @@ const articleSchema = new mongoose.Schema({
         required:true
         
     },
+    // photos:{
+    //     type:String
+    // },
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -50,6 +61,19 @@ const articleSchema = new mongoose.Schema({
 // })
 
 // Create the Habit model using the schema
+// let storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, path.join(__dirname,'..',ARTICLEIMG_PATH))
+//     },
+//     filename: function (req, file, cb) {
+//       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+//       cb(null, file.fieldname + '-' + uniqueSuffix)
+//     }
+// });
+
+// articleSchema.static.uploadedPhotos = multer({storage: storage}).single('photos ');
+// articleSchema.statics.photosPath = ARTICLEIMG_PATH;
+
 const Article = mongoose.model('Article', articleSchema);
 
 // Export the model

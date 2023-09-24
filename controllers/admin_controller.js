@@ -134,9 +134,9 @@ module.exports.createArticle = async function (req, res) {
     // });
     // Sanitize and save the HTML content
   const sanitizedHTML = DOMPurify.sanitize(req.body.textarea); // Assuming textarea is the rich text input
-    if (!txtinput || !textarea) {
-      return res.status(400).json({ message: 'Title and content are required.' });
-    }
+    // if (!txtinput || !textarea) {
+    //   return res.status(400).json({ message: 'Title and content are required.' });
+    // }
   
   try {
   
@@ -148,11 +148,19 @@ module.exports.createArticle = async function (req, res) {
       textarea: sanitizedHTML,
       user: req.user 
     });
-  
+    // let user = await Article.findById(req.params.id);
+    // Article.uploadedPhotos(req,res,function(err){
+    //   if(err){
+    //     console.log("*****Multer Error",err);
+    //   }
+    //   console.log(req.file);
+    // })
     // Save the article
     const savedArticle = 
     await article.save();
-  
+    
+
+
     res.status(201).json({ message: 'Article saved successfully', article: savedArticle });
     
   } catch (error) {

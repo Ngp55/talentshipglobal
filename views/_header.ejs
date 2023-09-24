@@ -74,37 +74,6 @@
           </a>
         </li>
       </ul>
-      <ul>
       
-
-            <% if (locals.user){ %>
-              <%if(locals.user.isAdmin){%>
-                  <div class="logOut">
-                                    
-                      <a href="/admin/dashboard"> <small>Admin Dashboard</small> </a>
-                      
-                      <span class="nameOfUser"><img src="/images/profile.jpg"><%= locals.user.name%>  </span>
-                      <a href="/users/sign-out" > <small>LogOut </a> </small> 
-                  </div>
-              <%}else{%>    
-                  
-                  <div class="logOut"> 
-                  
-                  <span class="nameOfUser"><img src="/images/profile.jpg"><%= locals.user.name%>  </span>
-                  <a href="/users/sign-out" > <small>LogOut</small> </a> 
-              </div>
-              <%}%>
-              
-          <%} else { %>
-              <div class="noUser">
-                  <ul>
-                      <li> <a href="/users/sign-in"> Sign-In </a> </li>
-                      <li>  <a href="/users/sign-up"> Sign-Up </a> </li>
-                  </ul>
-              </div>
-          
-          <%}%> 
-    
-      </ul>
     </div>
   </nav>

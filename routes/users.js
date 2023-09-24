@@ -8,7 +8,7 @@ const usersController = require('../controllers/users_controller');
 
 // router.get('/users', usersController.user);
 
-router.get('/profile',passport.checkAuthentication,usersController.user);
+// router.get('/profile',passport.checkAuthentication,usersController.user);
 
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
@@ -31,8 +31,8 @@ router.get('/dashboard',passport.checkAuthentication,usersController.userdashboa
 
 router.get('/sign-out',usersController.destroySession);
 
-router.get('/hello',usersController.formshow);
-router.post('/save-form',usersController.saveform);
+// router.get('/hello',usersController.formshow);
+// router.post('/save-form',usersController.saveform);
 
 
 module.exports = router;
