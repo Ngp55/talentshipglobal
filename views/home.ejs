@@ -30,27 +30,22 @@
                 <li>
                   <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">
                     <img src="/images/homepageimg/news_thumbnail2.jpg" alt="Flash News"><%- article.txtinput %>
-                  </a>
-                  
+                  </a> 
                 </li>
               <% }); %>
             </ul>
-            
-
-
-
-            <!-- <div class="social_area">
+            <div class="social_area">
               <ul class="social_nav">
                 <li class="facebook"><a href="#"></a></li>
                 <li class="twitter"><a href="#"></a></li>
-                <li class="flickr"><a href="#"></a></li>
-                <li class="pinterest"><a href="#"></a></li>
-                <li class="googleplus"><a href="#"></a></li>
-                <li class="vimeo"><a href="#"></a></li>
+                <!-- <li class="flickr"><a href="#"></a></li> -->
+                <!-- <li class="pinterest"><a href="#"></a></li> -->
+                <!-- <li class="googleplus"><a href="#"></a></li> -->
+                <!-- <li class="vimeo"><a href="#"></a></li> -->
                 <li class="youtube"><a href="#"></a></li>
                 <li class="mail"><a href="#"></a></li>
               </ul>
-            </div> -->
+            </div> 
           </div>
         </div>
       </div>
@@ -60,27 +55,62 @@
       <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
           <div class="slick_slider">
-            <div class="single_iteam"> <a href="pages/single_page.html"> <img src="/images/homepageimg/slider_img4.jpg" alt=""></a>
+            <div class="single_iteam"> 
+              
+              
+              <ul>
+                <% articles.forEach(article => { %>
+                    <li>
+                     <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;"> 
+                          <img src="/images/homepageimg/slider_img4.jpg" alt="">
+                        </a>
+                <% }); %>
+            </ul>
+
               <div class="slider_article">
-                <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+                <h2>
+                  <ul>
+                    <% articles.forEach(article => { %>
+                        <li>
+                         <a class="slider_tittle" href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Fusce eu nulla semper porttitor felis sit amet</a>
+                    <% }); %>
+              </ul>
+              
+                </h2>
                 <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
               </div>
             </div>
-            <div class="single_iteam"> <a href="pages/single_page.html"> <img src="/images/homepageimg/slider_img2.jpg" alt=""></a>
+            <div class="single_iteam"> 
+                <ul>
+                  <% articles.forEach(article => { %>
+                  <li>
+                    <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;"> <img src="/images/homepageimg/slider_img2.jpg" alt=""></a>
+                  </li>
+                    <% }); %>
+                </ul>
               <div class="slider_article">
-                <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+                <h2>
+                  <a class="slider_tittle" href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Fusce eu nulla semper porttitor felis sit amet</a>
+                </h2>
                 <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
               </div>
             </div>
-            <div class="single_iteam"> <a href="pages/single_page.html"> <img src="/images/homepageimg/slider_img3.jpg" alt=""></a>
+            <div class="single_iteam"> 
+              <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;"> 
+                <img src="/images/homepageimg/slider_img3.jpg" alt=""></a>
               <div class="slider_article">
-                <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+                <h2>
+                  <a class="slider_tittle" href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Fusce eu nulla semper porttitor felis sit amet</a>
+                </h2>
                 <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
               </div>
             </div>
-            <div class="single_iteam"> <a href="pages/single_page.html"> <img src="/images/homepageimg/slider_img1.jpg" alt=""></a>
+            <div class="single_iteam"> 
+              <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;"> 
+                <img src="/images/homepageimg/slider_img1.jpg" alt="">
+              </a>
               <div class="slider_article">
-                <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+                <h2><a class="slider_tittle" href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Fusce eu nulla semper porttitor felis sit amet</a></h2>
                 <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
               </div>
             </div>
@@ -95,9 +125,9 @@
                 <% articles.forEach(article => { %>
                     <li>
                         <div class="media"> 
-                          <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                          <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
                           <div class="media-body"> 
-                            <a href="pages/single_page.html" class="catg_title"><%- article.txtinput %></a> 
+                            <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"><%- article.txtinput %></a> 
                           </div>
                         </div>
                 </li>
@@ -122,8 +152,9 @@
                 
                   <% articles.forEach(article => { %>
                       <li>
-                         <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="/images/homepageimg/featured_img1.jpg"> <span class="overlay"></span> </a>
-                        <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
+                         <figure class="bsbig_fig"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="featured_img"> 
+                          <img alt="" src="/images/homepageimg/featured_img1.jpg"> <span class="overlay"></span> </a>
+                        <figcaption> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
                         <p>
                           <%- article.txtinput %>
                         </p>
@@ -137,8 +168,8 @@
                 <ul class="spost_nav">
                   <% articles.forEach(article => { %>  
                       <li>
-                        <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img  alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                          <div class="media-body"> <a href="pages/single_page.html" class="catg_title"><%- article.txtinput %></a> 
+                        <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img  alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                          <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"><%- article.txtinput %></a> 
                           </div>
                         </div>
                     </li>
@@ -154,7 +185,7 @@
                   <ul class="business_catgnav wow fadeInDown">
                     <li>
                       <figure class="bsbig_fig"> <a href="/single_page.html" class="featured_img"> <img alt="" src="/images/homepageimg/featured_img2.jpg"> <span class="overlay"></span> </a>
-                        <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
+                        <figcaption> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
                       </figure>
                     </li>
@@ -162,8 +193,8 @@
                   <ul class="spost_nav">
                     <% articles.forEach(article => { %>  
                         <li>
-                          <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                            <div class="media-body"> <a href="pages/single_page.html" class="catg_title"><%- article.txtinput %></a> </div>
+                          <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                            <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"><%- article.txtinput %></a> </div>
                           </div>
                         </li>
                     <% }); %>
@@ -175,8 +206,8 @@
                   <h2><span>Technology</span></h2>
                   <ul class="business_catgnav">
                     <li>
-                      <figure class="bsbig_fig wow fadeInDown"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="/images/homepageimg/featured_img3.jpg"> <span class="overlay"></span> </a>
-                        <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
+                      <figure class="bsbig_fig wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="featured_img"> <img alt="" src="/images/homepageimg/featured_img3.jpg"> <span class="overlay"></span> </a>
+                        <figcaption> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
                       </figure>
                     </li>
@@ -184,8 +215,8 @@
                   <ul class="spost_nav">
                     <% articles.forEach(article => { %>  
                         <li>
-                          <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                            <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%- article.txtinput %></a> </div>
+                          <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                            <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> <%- article.txtinput %></a> </div>
                           </div>
                         </li>
                     <% }); %>
@@ -210,8 +241,8 @@
               <div class="single_post_content_left">
                 <ul class="business_catgnav">
                   <li>
-                    <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="pages/single_page.html"> <img src="/images/homepageimg/featured_img1.jpg" alt=""> <span class="overlay"></span> </a>
-                      <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
+                    <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;"> <img src="/images/homepageimg/featured_img1.jpg" alt=""> <span class="overlay"></span> </a>
+                      <figcaption> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
                       <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
                     </figure>
                   </li>
@@ -221,8 +252,8 @@
                 <ul class="spost_nav">
                   <% articles.forEach(article => { %>  
                     <li>
-                      <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                        <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%- article.txtinput %></a> </div>
+                      <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                        <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> <%- article.txtinput %></a> </div>
                       </div>
                     </li>
                   <% }); %>
@@ -237,23 +268,23 @@
               <h2><span>Popular Post</span></h2>
               <ul class="spost_nav">
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                  <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                    <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
                   </div>
                 </li>
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
+                  <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img2.jpg"> </a>
+                    <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
                   </div>
                 </li>
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
+                  <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                    <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
                   </div>
                 </li>
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
+                  <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img2.jpg"> </a>
+                    <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
                   </div>
                 </li>
               </ul>
@@ -274,15 +305,15 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="video">
                   <div class="vide_area">
-                    <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="250" src="https://youtu.be/3iE7GS5yAI8" frameborder="0" allowfullscreen></iframe>
                   </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="comments">
                   <ul class="spost_nav">
                     <% articles.forEach(article => { %>  
                       <li>
-                          <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
-                            <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> <%- article.txtinput %></a> </div>
+                          <div class="media wow fadeInDown"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="media-left"> <img alt="" src="/images/homepageimg/post_img1.jpg"> </a>
+                            <div class="media-body"> <a href="/single-page/<%= article.id%>" onclick="openPopup('/single-page/<%= article.id%>'); return false;" class="catg_title"> <%- article.txtinput %></a> </div>
                           </div>
                         </li>
                     <% }); %>
@@ -325,32 +356,6 @@
     </footer>
   
 
-    <script>
-      // Function to open the login form
-      function openLoginForm() {
-        document.getElementById("overlay").style.display = "block";
-        document.getElementById("loginForm").style.display = "block";
-  
-        // Add an event listener for the "Escape" key
-        document.addEventListener("keydown", handleKeyPress);
-      }
-  
-      // Function to close the login form
-      function closeLoginForm() {
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("loginForm").style.display = "none";
-  
-        // Remove the event listener for the "Escape" key
-        document.removeEventListener("keydown", handleKeyPress);
-      }
-  
-      // Event handler for the "Escape" key press
-      function handleKeyPress(event) {
-        if (event.key === "Escape") {
-          closeLoginForm();
-        }
-      }
-    </script>
 
         
        
