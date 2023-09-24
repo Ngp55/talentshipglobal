@@ -1,5 +1,14 @@
 const Article = require('../models/article');
-const sanitizeHtml = require('sanitize-html');
+const { JSDOM } = require('jsdom');
+const { window } = new JSDOM('');
+const DOMPurify = require('dompurify')(window);
+
+// Sanitize and save the HTML content
+//const sanitizedHTML = DOMPurify.sanitize(req.body.textarea); // Assuming textarea is the rich text input
+
+
+
+//const sanitizeHtml = require('sanitize-html');
 
 module.exports.dashboard = function(req, res){
   if(req.isAuthenticated() && req.user.isAdmin){ // Check if the user is authenticated and has admin privileges
@@ -30,11 +39,11 @@ module.exports.addPost = (req, res) => {
 
 };
 
-module.exports.postList = (req, res) => {
+module.exports.articleList = (req, res) => {
   
   
   if(req.isAuthenticated() && req.user.isAdmin){ // Check if the user is authenticated and has admin privileges
-    return  res.render('adminw/admin_postLists',{
+    return  res.render('admin/admin_articleLists',{
       title: "Post List || ThinkitToday",
       layout:"admin_layout"
 });
@@ -113,42 +122,18 @@ module.exports.postList = (req, res) => {
 
 // };
 module.exports.createArticle = async function (req, res) {
-  // try {
-  //   if (!req.isAuthenticated()) {
-  //     return res.status(401).json({ error: 'Unauthorized' });
-  //   }
-
-  //   const { textinput, datetimeinput, catnames, textarea } = req.body;
-  //   console.log(req.body);
-
-  //    // Create a new Article instance
-  // const article = new Article({
-  //     textinput,
-  //     datetimeinput,
-  //     catnames,
-  //     textarea,
-  //     user: req.user 
-  // });
-
-  //   const savedArticle = await article.save();
-    
-  //   res.status(201).json({ message: 'Article saved successfully', article: savedArticle });
-    
-    
-  // } catch (error) {
-  //   res.status(500).json({ error: 'Failed to save the article' });
-  // }
   const { txtinput,datetimeinput,catnames,textarea} =req.body;
     console.log("########################");
     console.log(typeof txtinput);console.log(typeof datetimeinput);console.log(typeof catnames);console.log(typeof textarea);
     console.log("########################");
     console.log(req.body);
     //To sanitize the html tags that malpractise can't be done
-    const sanitizedContent = sanitizeHtml(textarea, {
-      allowedTags: [...sanitizeHtml.defaults.allowedTags],
-      allowedAttributes: {},
-    });
-
+    // const sanitizedContent = sanitizeHtml(textarea, {
+    //   allowedTags: [...sanitizeHtml.defaults.allowedTags],
+    //   allowedAttributes: {},
+    // });
+    // Sanitize and save the HTML content
+  const sanitizedHTML = DOMPurify.sanitize(req.body.textarea); // Assuming textarea is the rich text input
     if (!txtinput || !textarea) {
       return res.status(400).json({ message: 'Title and content are required.' });
     }
@@ -159,7 +144,8 @@ module.exports.createArticle = async function (req, res) {
       txtinput,
       datetimeinput,
       catnames,
-      textarea: sanitizedContent,
+      // textarea: sanitizedContent,
+      textarea: sanitizedHTML,
       user: req.user 
     });
   

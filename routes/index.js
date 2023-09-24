@@ -7,6 +7,7 @@ const homeController = require('../controllers/home_controller');
 
 
 router.get('/', homeController.home);
+router.get('/single-page/:id',homeController.singlepage);
 // router.use('/users',require('./users'));
 // router.get('/emp', empController.employee);
 

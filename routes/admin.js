@@ -14,7 +14,7 @@ router.get('/dashboard',passport.checkAuthentication,adminController.dashboard);
 router.get('/addpost',passport.checkAuthentication,adminController.addPost);
 
 
-router.get('/postlist',passport.checkAuthentication,adminController.postList);
+router.get('/postlist',passport.checkAuthentication,adminController.articleList);
 
 router.post('/save-article',passport.checkAuthentication,adminController.createArticle);
 
