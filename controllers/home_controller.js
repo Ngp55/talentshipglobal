@@ -1,50 +1,71 @@
 //const User = require('../models/user');
-const Articles = require('../models/article');
+const Data = require('../models/data');
 
 
 module.exports.home = async function(req, res){
-    //  console.log(req.cookies);
-    //  res.cookie('user_id', 24);
-    //let user = User.findById(req.user.id);
-      
-
-    let articles = await Articles.find({},'txtinput datetimeinput textarea catnames');
-    //console.log(articles[0]);
-
     return res.render('./home',{
-        title: "HomePage || ThinkitToday",
-        layout:"layout",
-        articles:articles
+        title: "HomePage || talentshipglobal",
+        layout:"layout"
     });
 };
 
-module.exports.singlepage = async function(req,res){
-    console.log(req.params.id);
-    //const ArticleId = req.param.id;
+module.exports.team = function(req, res){
+    return res.render('team',{
+        title: "Team || talentshipglobal",
+        layout:"layout"
+    });
+};
+module.exports.testimonail = function(req, res){
+    return res.render('testimonial',{
+        title: "Testimonail || talentshipglobal",
+        layout:"layout"
+    });
+};
 
-    // let articles = await Articles.find({},'txtinput datetimeinput textarea catnames');
-    // return res.render('single_Page',{
-    //     title:"SinglePage ||ThinkitToday",
-    //     articles:articles
-    // });
-    const articleId = req.params.id;
+module.exports.service = function(req, res){
+    return res.render('service',{
+        title: "Service || talentshipglobal",
+        layout:"layout"
+    });
+};
 
-    try {
-        // Use Mongoose's findById method to fetch the article by its ID
-        const article = await Articles.findById(articleId, 'txtinput datetimeinput textarea catnames');
+module.exports.quote = function(req, res){
+    return res.render('quote',{
+        title: "Quote || talentshipglobal",
+        layout:"layout"
+    });
+};
 
-        if (!article) {
-            // Handle the case where the article is not found
-            return res.status(404).send('Article not found');
-        }
+module.exports.feature = function(req, res){
+    return res.render('feature',{
+        title: "Feature || talentshipglobal",
+        layout:"layout"
+    });
+};
 
-        return res.render('single_Page', {
-            title: "SinglePage || ThinkitToday",
-            article: article // Pass the retrieved article to your template
-        });
-    } catch (err) {
-        // Handle any errors that occur during the database query
-        console.error(err);
-        return res.status(500).send('Internal Server Error');
-    }
+module.exports.detail = function(req, res){
+    return res.render('detail',{
+        title: "Details || talentshipglobal",
+        layout:"layout"
+    });
+};
+
+module.exports.contact = function(req, res){
+    return res.render('contact',{
+        title: "Contact || talentshipglobal",
+        layout:"layout"
+    });
+};
+
+module.exports.blog = function(req, res){
+    return res.render('blog',{
+        title: "Blog || talentshipglobal",
+        layout:"layout"
+    });
+};
+module.exports.about = function(req, res){
+    return res.render('about',{
+        title: "About || talentshipglobal",
+        layout:"layout"
+    });
 };

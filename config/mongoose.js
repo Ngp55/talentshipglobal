@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ThinkitToday');
+
+mongoose.set('strictQuery', false);
+
+mongoose.connect('mongodb://localhost/talentshipglobal');
 
 const db = mongoose.connection;
 

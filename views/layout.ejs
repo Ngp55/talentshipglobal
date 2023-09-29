@@ -3,41 +3,39 @@
         <title>
             <%= title  %>
         </title>
-        
-        <link rel="stylesheet" href="/css/layout.css">
-        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/animate.css">
-        <link rel="stylesheet" type="text/css" href="/css/font.css">
-        <link rel="stylesheet" type="text/css" href="/css/li-scroller.css">
-        <link rel="stylesheet" type="text/css" href="/css/slick.css">
-        <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css">
-        <link rel="stylesheet" type="text/css" href="/css/theme.css">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href="/img/favicon.ico" rel="icon">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Libraries Stylesheet -->
+        <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Template Stylesheet -->
+        <link href="/css/style.css" rel="stylesheet"
         <%- style %>
-        
     </head>
 
     <body>
         <%- include('_header'); %>
-        <div class="container">
+        <div>
+            
             <%- body %>
 
         </div>
-        
-
-
         <%- include('_footer'); %>
-        
-        <script src="/js/jquery.min.js"></script> 
-        <script src="/js/wow.min.js"></script> 
-        <script src="/js/bootstrap.min.js"></script> 
-        <script src="/js/slick.min.js"></script> 
-        <script src="/js/jquery.li-scroller.1.0.js"></script> 
-        <script src="/js/jquery.newsTicker.min.js"></script> 
-        <script src="/js/jquery.fancybox.pack.js"></script> 
-        <script src="/js/custom.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/lib/easing/easing.min.js"></script>
+        <script src="/lib/waypoints/waypoints.min.js"></script>
+        <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
         <%- script %>
     </body>
 </html> 

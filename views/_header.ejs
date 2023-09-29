@@ -1,79 +1,30 @@
 <link rel="stylesheet" href="/css/_header.css">
-
-<!-- <ul>
-    <% if (locals.user) { %>
-        <li> <%= user.name %> </li>
-        <li>
-            <a href="/users/sign-out">Sign Out</a>
-        </li>
-
-    <% } else { %>
-
-        <li>
-            <a href="/users/sign-in">Sign In</a>
-        </li>
-        <li>
-            <a href="/users/sign-up">Sign Up</a>
-        </li>
-
-    <% } %>
-</ul> -->
-<nav class="menu-container">
-    <!-- burger menu -->
-    <input type="checkbox" aria-label="Toggle menu" />
-    <span></span>
-    <span></span>
-    <span></span>
-  
-    <!-- logo -->
-    <a href="#Thinkittoday" class="menu-logo">
-      <img src="/images/companylogo.jpg" alt="Thinkit.Today" title="company logo"/>
-    </a>
-  
-    <!-- menu items -->
-    <div class="menu">
-      <ul>
-        <li>
-          <a href="#home">
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#polity">
-            Polity
-          </a>
-        </li>
-        <li>
-          <a href="#crime">
-            अपराध
-          </a>
-        </li>
-        <li>
-          <a href="#farming">
-            खेत-खलिहान
-          </a>
-        </li>
-        <li>
-          <a href="#largemarket">
-            मंडी बाजार
-          </a>
-        </li>
-        <li>
-          <a href="#game">
-            खेल
-          </a>
-        </li>
-        <li>
-          <a href="#culture">
-            संस्कृति
-          </a>
-        </li>
-        <li>
-          <a href="#entertainment">
-            मनोरंजन
-          </a>
-        </li>
-      </ul>
-      
-    </div>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
+      <a href="/" class="navbar-brand p-0">
+          <h1 class="m-0 text-uppercase text-primary"><i class="far fa-smile text-primary me-2"></i>TalentShip Global</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto py-0 me-n3">
+              <a href="/" class="nav-item nav-link active">Home</a>
+              <a href="/about-page" class="nav-item nav-link">About Us</a>
+              <a href="/service-page" class="nav-item nav-link">Service</a>
+              <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                  <div class="dropdown-menu m-0">
+                      <a href="/blog-page" class="dropdown-item">Blog Grid</a>
+                      <a href="/detail-page" class="dropdown-item">Blog Detail</a>
+                      <a href="/feature-page" class="dropdown-item">Features</a>
+                      <a href="/quote-page" class="dropdown-item">Quote Form</a>
+                      <a href="/team-page" class="dropdown-item">The Team</a>
+                      <a href="/testimonial-page" class="dropdown-item">Testimonial</a>
+                  </div>
+              </div>
+              <a href="/contact-page" class="nav-item nav-link">Contact Us</a>
+          </div>
+      </div>
   </nav>
+  <!-- Navbar End -->

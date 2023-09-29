@@ -66,9 +66,9 @@ app.use(session({
         maxAge : (1000 * 60 * 100)
     },
     store: MongoStore.create({
-            mongoUrl:'mongodb://localhost/ThinkitToday',
+            mongoUrl:'mongodb://localhost/talentshipglobal',
             autoRemove:"disabled"
-    },
+  	  },
     function(err){
         console.log(err || 'connect-mongodb setup ok');
     })

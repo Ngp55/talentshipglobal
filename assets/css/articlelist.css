@@ -23,6 +23,9 @@ body{margin-top:20px;}
 				.table {
 				    border-collapse: separate;
 				}
+				.table button{
+
+				}
 				.table-hover > tbody > tr:hover > td,
 				.table-hover > tbody > tr:hover > th {
 					background-color: #eee;
@@ -213,3 +216,4 @@ body{margin-top:20px;}
 				    font-weight: bold;
 				}
 
+			}
