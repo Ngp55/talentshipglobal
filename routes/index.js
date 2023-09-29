@@ -8,6 +8,13 @@ const homeController = require('../controllers/home_controller');
 
 
 router.get('/', homeController.home);
+// router.get('/', (req, res, next) => {
+//     // Call homeController.home
+//     homeController.home(req, res, () => {
+//         // After homeController.home is done, call homeController.aside
+//         homeController.asideLayout(req, res, next);
+//     });
+// });
 router.get('/team-page', homeController.team);
 router.get('/testimonial-page', homeController.testimonail);
 router.get('/service-page', homeController.service);

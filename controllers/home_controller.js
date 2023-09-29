@@ -1,12 +1,29 @@
 //const User = require('../models/user');
 const Data = require('../models/data');
+const User = require('../models/user');
+
 
 
 module.exports.home = async function(req, res){
-    return res.render('./home',{
-        title: "HomePage || talentshipglobal",
-        layout:"layout"
+    try {
+        if (!req.isAuthenticated()) {
+            //req.flash('error', 'Please sign in!');
+            return res.redirect('/users/sign-in');
+        }
+
+        let user = await User.findById(req.user.id);
+
+        return res.render('home',{
+        title: "Home || talentshipglobal",
+        layout:"layout",
+        user:user
     });
+    } catch (err) {
+        console.log(err);
+        return res.redirect('back');
+    }
+
+    
 };
 
 module.exports.team = function(req, res){

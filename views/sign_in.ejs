@@ -1,25 +1,43 @@
 <link rel="stylesheet" href="/css/signin.css">
+<body>
 
+    <div class="container-fluid bg-secondary px-0">
+        <div class="row g-0">
+            <div class="col-lg-6 py-6 px-5">
+                <h1 class="display-5 mb-4">Sign In</h1>
+                <form method="POST" action="/users/create-session">
+                    <div class="col g-3 mt-2">
+                        <div class="col-6 mt-2">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="email" id="form-floating-2" placeholder="name@demo.com">
+                                <label for="form-floating-2">Email address</label>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-2">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="password" id="form-floating-2" placeholder="**********">
+                                <label for="form-floating-2">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <button class="btn btn-primary w-35 py-2 mt-2" type="submit">Log In</button>
+                            <a href="/users/forgetPassword" > <button class="btn btn-primary w-35 py-2 mt-2" type="submit">Forget Password</button> </a>
+                        </div>
+                        <div class="extraStuff">
+                            <small> Don't have account ?</small>
+                            <a href="/users/sign-up"> Register User</a>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</body>
  
-<div class="mainContainer ">
-    <div class="companyLogo">
-        <img src="../images/companylogo.jpg" id="logo-pic">
-    </div>
 
-    <div class="formInput">
-        <h1> Welcome </h1>
-        <form method="POST" action="/users/create-session">
-            <input type="email" name="email" placeholder="Enter email" required><br>
-            <input type="password" name="password" placeholder="Enter password" required><br>
-            <div class='buttons'>
-                <div class="forgetPassword"><a href="/users/forgetPassword"> ForgetPassword </a></div>
-                <div class='submitButtons'><button type="submit">Sign In</button></div>
-        </form>
-    </div>
-
-    <div class="extraStuff">
-        <small> Don't have account ?</small>
-        <a href="/users/sign-up"> Register User</a>
-    </div>
-</div>
-</div>

@@ -4,9 +4,18 @@ const passport = require('passport');
 
 const adminController = require('../controllers/admin_controller');
 
-router.get('/dashboard',passport.checkAuthentication,adminController.dashboard);
+router.get('/dashboard', (req, res, next) => {
+    // Call homeController.home
+    passport.checkAuthentication,adminController.adminDashboard(req, res, () => {
+        // After homeController.home is done, call homeController.aside
+        passport.checkAuthentication,adminController.asideLayout(req, res, next);
+    });
+});
 
-// router.get('/addpost',passport.checkAuthentication,adminController.addPost);
+
+router.get('/dashboard',passport.checkAuthentication,adminController.adminDashboard);
+
+ router.get('/profile',passport.checkAuthentication,adminController.adminProfile);
 
 
 // router.get('/postlist',passport.checkAuthentication,adminController.articleList);
