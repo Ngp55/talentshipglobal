@@ -8,7 +8,7 @@ const usersController = require('../controllers/users_controller');
 
 // router.get('/users', usersController.user);
 
-// router.get('/profile',passport.checkAuthentication,usersController.user);
+router.get('/profile',passport.checkAuthentication,usersController.user);
 
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
@@ -30,6 +30,11 @@ router.post('/forgetPasswordLink', usersController.forgetPasswordLink);
 router.get('/dashboard',passport.checkAuthentication,usersController.userdashboard);
 
 router.get('/sign-out',usersController.destroySession);
+
+router.post('/save-service',passport.checkAuthentication,usersController.createService);
+
+
+router.get('/service-List',passport.checkAuthentication,usersController.serviceList);
 
 // router.get('/hello',usersController.formshow);
 // router.post('/save-form',usersController.saveform);

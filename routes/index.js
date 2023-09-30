@@ -2,12 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
+const passport = require('passport');
+
 const homeController = require('../controllers/home_controller');
 
 
 
 
-router.get('/', homeController.home);
+router.get('/', passport.checkAuthentication,homeController.home);
 // router.get('/', (req, res, next) => {
 //     // Call homeController.home
 //     homeController.home(req, res, () => {
@@ -15,15 +17,15 @@ router.get('/', homeController.home);
 //         homeController.asideLayout(req, res, next);
 //     });
 // });
-router.get('/team-page', homeController.team);
-router.get('/testimonial-page', homeController.testimonail);
-router.get('/service-page', homeController.service);
-router.get('/quote-page', homeController.quote);
-router.get('/feature-page', homeController.feature);
-router.get('/detail-page', homeController.detail);
-router.get('/contact-page', homeController.contact);
-router.get('/blog-page', homeController.blog);
-router.get('/about-page', homeController.about);
+router.get('/team-page', passport.checkAuthentication,homeController.team);
+router.get('/testimonial-page',passport.checkAuthentication, homeController.testimonail);
+router.get('/service-page',passport.checkAuthentication, homeController.service);
+router.get('/quote-page',passport.checkAuthentication, homeController.quote);
+router.get('/feature-page',passport.checkAuthentication, homeController.feature);
+router.get('/detail-page',passport.checkAuthentication, homeController.detail);
+router.get('/contact-page',passport.checkAuthentication, homeController.contact);
+router.get('/blog-page',passport.checkAuthentication, homeController.blog);
+router.get('/about-page',passport.checkAuthentication, homeController.about);
 
 
 

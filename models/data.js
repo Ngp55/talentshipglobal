@@ -1,35 +1,26 @@
 
 const mongoose = require('mongoose');
 
-
 // Define the schema for storing habits entered by user
 const dataSchema = new mongoose.Schema({
-    txtinput: {
+    service_name: {
         type: String,
         required:true
     },
    
-    datetimeinput: {
-        type: Date,
+    description: {
+        type: String,
         required: true
     },
-    textarea: {
-        type: String,
+    price: {
+        type: Number,
         required:true
     },
-    catnames: {
-        type: String,
-        enum: ['polity','crime','farming','market','game','culture','entertainment'],
+    other_info:{
+        type:String,
         required:true
-        
     },
-    published:{
-        type:Boolean,
-        default:false
-    },
-    // photos:{
-    //     type:String
-    // },
+    
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

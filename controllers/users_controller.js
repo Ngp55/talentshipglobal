@@ -1,11 +1,15 @@
-const User = require('../models/user');
+const { JSDOM } = require('jsdom');
+const { window } = new JSDOM('');
+const DOMPurify = require('dompurify')(window);
 
+const User = require('../models/user');
+const Data = require('../models/data');
 
 
 module.exports.user = function(req, res){
-
     return res.render('user/user_profiles',{
-        title:"Profile"
+        title:"Profile",
+        layout:"admin_layout"
     })
 };
 // render the signup page
@@ -13,9 +17,6 @@ module.exports.signUp = function (req, res){
     if(req.isAuthenticated()){
         return res.redirect('/users/userlist');
     }
-
-
-
     return res.render('sign_up',{
         title:"Sign Up | talentshipglobal",
         layout:'layout'
@@ -25,7 +26,7 @@ module.exports.signUp = function (req, res){
 // render the signin page
 module.exports.signIn = function (req, res){
     if(req.isAuthenticated()){
-        return res.redirect('/admin/dashboard');
+        return res.redirect('/');
     }
 
 
@@ -35,26 +36,6 @@ module.exports.signIn = function (req, res){
     })
 };
 
-// module.exports.create = function(req, res){
-//     if(req.body.password != req.body.confirm_password){
-//         return res.redirect('back');
-
-//     }
-//     User.findOne({email: req.body.email} , function(err, user){
-//         if(err){console.log('errror in finding user in signing up'); return}
-//         if(!User){
-//             User.create(req.body, function(err , user){
-//                 if(err){console.log('error in creating user while signing up'); return}
-//                 return res.redirect('/users/sign-in');
-//             })
-//         }else{
-//             return res.redirect('back');
-//         }
-//     });
-
-
-
-// };
 module.exports.create = async function(req, res) {
     try {
         if (req.body.password != req.body.confirm_password) {
@@ -83,20 +64,6 @@ module.exports.createSession = function(req, res){
     return res.redirect('/admin/dashboard');
 
 }
-
-// module.exports.destroySession = function(req ,res){
-//     // req.logout();
-//     req.logout(function(err) {
-//         if (err) {
-//           console.log('Error in logging out:', err);
-//           return;
-//         }
-    
-//         // Clear the session cookie
-//         res.clearCookie('connect.sid');
-
-//     return res.redirect('/');
-// }
 
 // Render Forget Password page
 module.exports.forgetPasswordPage = function (req, res) {
@@ -144,3 +111,53 @@ module.exports.destroySession = function(req, res) {
     });
 } 
 
+
+
+module.exports.createService = async function (req, res) {
+        const { service_name,description,price, other_info } =req.body;
+  
+      console.log("########################");
+      console.log(typeof service_name);console.log(typeof description);console.log(typeof price);console.log(typeof other_info);
+      console.log("########################");
+      // Sanitize and save the HTML content
+    const sanitizedHTML_1 = DOMPurify.sanitize(req.body.description); // Assuming textarea is the rich text input
+    const sanitizedHTML_2 = DOMPurify.sanitize(req.body.other_info); // Assuming textarea is the rich text input
+    
+    try {
+    
+      const data = new Data({
+        service_name,
+        price,
+        description: sanitizedHTML_1,
+        other_info: sanitizedHTML_2,
+        user: req.user 
+      });
+      // Save the article
+      const savedData = await data.save();
+      
+  
+  
+      res.status(201).json({ message: 'Article saved successfully', data: savedData });
+      
+    } catch (error) {
+      if (error.name === 'ValidationError') {
+        // Handle validation errors
+        const validationErrors = {};
+        for (const field in error.errors) {
+          validationErrors[field] = error.errors[field].message;
+        }
+        res.status(400).json({ error: 'Validation failed', validationErrors });
+      } else {
+        // Handle other errors
+        console.error('Error saving article:', error);
+        res.status(500).json({ error: 'Failed to save the article' });
+      }
+    }
+  };
+  
+  module.exports.serviceList = function(req, res){
+    return res.render('user/user_serviceList',{
+        title: "ServiceList || talentshipglobal",
+        layout:"admin_layout"
+    });
+};
