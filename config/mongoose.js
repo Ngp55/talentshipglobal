@@ -1,15 +1,23 @@
-const mongoose = require('mongoose');
+
+const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', false);
 
-mongoose.connect('mongodb://localhost/talentshipglobal');
+const url = `mongodb+srv://asdfrajkumar1122:UIfvIeGADP7LG5yD@cluster0.1tprpsp.mongodb.net/?retryWrites=true&w=majority`;
 
-const db = mongoose.connection;
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect(url,connectionParams)
+    .then( () => {
+        console.log('Connected to database ')
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. \n${err}`);
+    })
 
-db.on('error', console.error.bind(console,"ErroR in connection database"));
 
-db.once('open', function(){
-    console.log('Konnected to Database:: MongoDB')
-});
 
-module.exports = db;
+
+
