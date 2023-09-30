@@ -1,0 +1,38 @@
+<body>
+    
+    <div class="container-fluid py-4">
+      <div class="row">
+            <h1>Manage Users</h1>      
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-1"><strong>Sl.No</strong></div>
+                    <div class="col-md-3"><strong>UserName</strong></div>
+                    <div class="col-md-3"><strong>E-mail</strong></div>
+                    <div class="col-md-2"><strong>Admin ?</strong></div>
+                    <div class="col-md-3"><strong>Delete</strong></div>
+                </div>
+            
+                <!-- Replace this with your dynamic data -->
+                <div class="row data-row">
+                    <% let counter = 1; %>
+                    <% users.forEach(user => { %>
+                        <div class="col-md-1"><%= counter %></div>
+                        <div class="col-md-3"><%= user.name %></div>
+                        <div class="col-md-3"><%= user.email %></div>
+                        <div class="col-md-2"><%= user.isAdmin %></div>
+                        <div class="col-md-3">
+                            <a href="/admin/delete-user/<%= user._id %>" style="color: crimson; font-weight: 500;"> Delete</a>
+                        </div>
+                        <% counter++; %>
+                    <% }); %>
+                </div>
+            
+                <!-- Add more rows as needed -->
+            </div>
+            
+        </div>
+  
+    </div>      
+  
+                    
+  </body>

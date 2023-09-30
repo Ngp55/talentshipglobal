@@ -4,6 +4,8 @@ const passport = require('passport');
 
 const adminController = require('../controllers/admin_controller');
 
+//const usersController = require('../controllers/users_controller');
+
 router.get('/dashboard', (req, res, next) => {
     // Call homeController.home
     passport.checkAuthentication,adminController.adminDashboard(req, res, () => {
@@ -15,9 +17,15 @@ router.get('/dashboard', (req, res, next) => {
 
 router.get('/dashboard',passport.checkAuthentication,adminController.adminDashboard);
 
- router.get('/profile',passport.checkAuthentication,adminController.adminProfile);
+router.get('/profile',passport.checkAuthentication,adminController.adminProfile);
+router.get('/inquiry',passport.checkAuthentication,adminController.inqueryList);
+
+router.get('/users-list',passport.checkAuthentication,adminController.manageUsers);
+
+router.get('/delete-user',passport.checkAuthentication,adminController.deleteUsers);
 
 
+ 
 // router.get('/postlist',passport.checkAuthentication,adminController.articleList);
 
 // router.get('/display-none',passport.checkAuthentication,adminController.artDisable);

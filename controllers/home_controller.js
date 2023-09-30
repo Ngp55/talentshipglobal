@@ -1,5 +1,5 @@
 //const User = require('../models/user');
-const Data = require('../models/data');
+const Service = require('../models/data');
 const User = require('../models/user');
 
 

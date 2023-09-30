@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Define the schema for storing habits entered by user
-const dataSchema = new mongoose.Schema({
+const serviceSchema = new mongoose.Schema({
     service_name: {
         type: String,
         required:true
@@ -20,7 +20,6 @@ const dataSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -31,7 +30,7 @@ const dataSchema = new mongoose.Schema({
     }
 );
 
-const Data = mongoose.model('Data', dataSchema);
+const Service = mongoose.model('Service', serviceSchema);
 
 // Export the model
-module.exports = Data;
+module.exports = Service;

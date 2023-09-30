@@ -33,8 +33,9 @@ router.get('/sign-out',usersController.destroySession);
 
 router.post('/save-service',passport.checkAuthentication,usersController.createService);
 
-
 router.get('/service-List',passport.checkAuthentication,usersController.serviceList);
+
+
 
 // router.get('/hello',usersController.formshow);
 // router.post('/save-form',usersController.saveform);

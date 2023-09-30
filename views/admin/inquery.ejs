@@ -1,0 +1,31 @@
+<body>
+    
+    <div class="container-fluid py-4">
+      <div class="row">
+        <h1>Inquery List</h1>      
+        <div class="container mt-5">
+                    <div class="row">
+                        
+                        <div class="col-md-3"><strong>Service Name</strong></div>
+                        <div class="col-md-3"><strong>Price</strong></div>
+                        <div class="col-md-3"><strong>Description</strong></div>
+                        <div class="col-md-3"><strong>Other Info</strong></div>
+                    </div>
+                    
+                    <!-- Replace this with your dynamic data -->
+                    <div class="row data-row">
+                        <% services.forEach(service => { %>
+                            <div class="col-md-3"><%= service.service_name %></div>
+                            <div class="col-md-3"><%= service.price %></div>
+                            <div class="col-md-3"><%= service.description %></div>
+                            <div class="col-md-3"><%= service.other_info %></div>
+                        <% }); %>
+                    </div>
+                    <!-- Add more rows as needed -->
+                </div>
+        </div>
+  
+      </div>
+      </div>   
+  </div>
+  </body>

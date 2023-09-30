@@ -3,7 +3,7 @@ const { window } = new JSDOM('');
 const DOMPurify = require('dompurify')(window);
 
 const User = require('../models/user');
-const Data = require('../models/data');
+const Service = require('../models/data');
 
 
 module.exports.user = function(req, res){
@@ -61,7 +61,7 @@ module.exports.create = async function(req, res) {
 
 //sign in and create session
 module.exports.createSession = function(req, res){
-    return res.redirect('/admin/dashboard');
+    return res.redirect('/');
 
 }
 
@@ -107,7 +107,7 @@ module.exports.destroySession = function(req, res) {
     // res.cookie('user_id', 24);
     return res.render('user/user_dashboard',{
         title: "UserDashboard || talentshipglobal",
-        body:"UserDashboard"
+        layout:'admin_layout'
     });
 } 
 
@@ -125,7 +125,7 @@ module.exports.createService = async function (req, res) {
     
     try {
     
-      const data = new Data({
+      const services = new Service({
         service_name,
         price,
         description: sanitizedHTML_1,
@@ -133,11 +133,11 @@ module.exports.createService = async function (req, res) {
         user: req.user 
       });
       // Save the article
-      const savedData = await data.save();
+      const savedServices = await services.save();
       
   
   
-      res.status(201).json({ message: 'Article saved successfully', data: savedData });
+      res.status(201).json({ message: 'Article saved successfully', services : savedServices });
       
     } catch (error) {
       if (error.name === 'ValidationError') {
@@ -155,9 +155,43 @@ module.exports.createService = async function (req, res) {
     }
   };
   
-  module.exports.serviceList = function(req, res){
-    return res.render('user/user_serviceList',{
-        title: "ServiceList || talentshipglobal",
-        layout:"admin_layout"
-    });
-};
+//   module.exports.serviceList = function(req, res){
+//     return res.render('user/user_serviceList',{
+//         title: "ServiceList || talentshipglobal",
+//         layout:"admin_layout"
+//     });
+// };
+
+
+module.exports.serviceList = async function(req,res){
+  try {
+      let user = await User.findById(req.user.id);
+      let userId = req.user.id;
+       console.log(userId);
+      // let services = await Service.find(user: userId);
+
+
+      // console.log(services);
+      let services = await Service.find({ user: userId });
+
+    console.log(services);
+
+
+
+    
+        //console.log(services.service_name);
+        // console.log(service.price);
+        // console.log(service.description);
+        // console.log(service.other_info);
+    
+      return res.render('user/user_serviceList',{
+      title: "ServiceList || talentshipglobal",
+      user:user,
+      services:services,
+      layout:"admin_layout"
+  });
+  } catch (err) {
+      console.log(err);
+      return res.redirect('back');
+  }
+}

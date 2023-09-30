@@ -24,6 +24,34 @@
                   </div>
               </div>
               <a href="/contact-page" class="nav-item nav-link">Contact Us</a>
+                    <ul>
+                        <% if (locals.user){ %>
+                        <li>
+                        
+                            <%= user.name %>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="/users/sign-out">Sign OuT</a>
+                        </li>    
+                        <li>
+                            <%if(locals.user.isAdmin){%>
+                                <small>
+                                    <a href="/admin/dashboard">Admin Dashboard</a>
+                                </small>
+                            <%}else{%>
+                                <small>
+                                    <a href="/users/dashboard">User Dashboard</a>
+                                </small>
+                            <%}%>
+                        </li>
+                        <% } else { %>
+                            <li>
+                                <a href="/users/sign-in">Sign IN</a>
+                            </li>
+                            
+                            <% } %>
+                    </ul>
           </div>
       </div>
   </nav>
