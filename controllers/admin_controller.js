@@ -3,19 +3,6 @@
 const Service = require('../models/data');
 const User = require('../models/user');
 
-// module.exports.adminDashboard = function(req, res){
-//   if(req.isAuthenticated() && req.user.isAdmin){ // Check if the user is authenticated and has admin privileges
-//       return res.render('admin/admin_dashboard',{
-//         title: "Admin Dashboard || talentshipglobal",
-//         layout:"admin_layout"
-//   });
-//   } else {
-//       return res.render('unauthorized_entry', {
-//           title:'Unauthorized Entry'
-//       });
-//   }
-// };
-
 module.exports.asideLayout = async function(req,res){
   try {
       // if (!req.isAuthenticated()) {
@@ -104,7 +91,7 @@ module.exports.inqueryList = async function(req,res){
       let usersList = await User.find({});
 
       let userId = req.user.id;
-       console.log(userId);
+       //console.log(userId);
       // let services = await Service.find(user: userId);
 
 

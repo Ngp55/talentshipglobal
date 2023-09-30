@@ -89,8 +89,6 @@ module.exports.forgetPasswordLink = async function (req, res) {
 };
 
   module.exports.userdashboard = function(req, res){
-    // console.log(req.cookies);
-    // res.cookie('user_id', 24);
     return res.render('user/user_dashboard',{
         title: "UserDashboard || talentshipglobal",
         layout:'admin_layout'
@@ -141,12 +139,6 @@ module.exports.createService = async function (req, res) {
     }
   };
   
-//   module.exports.serviceList = function(req, res){
-//     return res.render('user/user_serviceList',{
-//         title: "ServiceList || talentshipglobal",
-//         layout:"admin_layout"
-//     });
-// };
 
 
 module.exports.serviceList = async function(req,res){
