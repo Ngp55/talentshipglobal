@@ -15,7 +15,7 @@ module.exports.user = function(req, res){
 // render the signup page
 module.exports.signUp = function (req, res){
     if(req.isAuthenticated()){
-        return res.redirect('/users/userlist');
+        return res.redirect('/');
     }
     return res.render('sign_up',{
         title:"Sign Up | talentshipglobal",
@@ -80,27 +80,13 @@ module.exports.forgetPasswordLink = async function (req, res) {
         return res.redirect('/users/signUp');
     }
     if (req.body.password == req.body.confirmPassword) {
-        req.flash('success', 'Password Changed :)');
+        
         user.password = req.body.password;
         await user.updateOne({ password: req.body.password });
         return res.redirect('/users/sign-in');
     }
-    return res.redirect('back');
+    return res.redirect('/users/forgetPassword');
 };
-
-module.exports.destroySession = function(req, res) {
-    req.logout(function(err) {
-      if (err) {
-        console.log('Error in logging out:', err);
-        return;
-      }
-  
-      // Clear the session cookie
-      res.clearCookie('connect.sid');
-      return res.redirect('/');
-    });
-  };
-  
 
   module.exports.userdashboard = function(req, res){
     // console.log(req.cookies);
@@ -167,23 +153,8 @@ module.exports.serviceList = async function(req,res){
   try {
       let user = await User.findById(req.user.id);
       let userId = req.user.id;
-       console.log(userId);
-      // let services = await Service.find(user: userId);
-
-
       // console.log(services);
       let services = await Service.find({ user: userId });
-
-    console.log(services);
-
-
-
-    
-        //console.log(services.service_name);
-        // console.log(service.price);
-        // console.log(service.description);
-        // console.log(service.other_info);
-    
       return res.render('user/user_serviceList',{
       title: "ServiceList || talentshipglobal",
       user:user,
@@ -195,3 +166,17 @@ module.exports.serviceList = async function(req,res){
       return res.redirect('back');
   }
 }
+
+
+module.exports.destroySession = function(req, res) {
+  req.logout(function(err) {
+    if (err) {
+      console.log('Error in logging out:', err);
+      return;
+    }
+
+    // Clear the session cookie
+    res.clearCookie('connect.sid');
+    return res.redirect('/');
+  });
+};

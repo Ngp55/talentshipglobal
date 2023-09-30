@@ -22,7 +22,7 @@ router.get('/inquiry',passport.checkAuthentication,adminController.inqueryList);
 
 router.get('/users-list',passport.checkAuthentication,adminController.manageUsers);
 
-router.get('/delete-user',passport.checkAuthentication,adminController.deleteUsers);
+router.get('/delete-user/:id',passport.checkAuthentication,adminController.deleteUsers);
 
 
  

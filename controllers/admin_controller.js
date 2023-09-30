@@ -124,6 +124,7 @@ module.exports.inqueryList = async function(req,res){
       return res.redirect('back');
   }
 }
+
 module.exports.manageUsers = async function (req, res) {
   let userList = await User.find({});
 

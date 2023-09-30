@@ -1,28 +1,36 @@
 <body>
     
     <div class="container-fluid py-4">
-      <div class="row">
-        <h1>Inquery List</h1>      
-        <div class="container mt-5">
-                    <div class="row">
-                        
-                        <div class="col-md-3"><strong>Service Name</strong></div>
-                        <div class="col-md-3"><strong>Price</strong></div>
-                        <div class="col-md-3"><strong>Description</strong></div>
-                        <div class="col-md-3"><strong>Other Info</strong></div>
-                    </div>
-                    
-                    <!-- Replace this with your dynamic data -->
-                    <div class="row data-row">
-                        <% services.forEach(service => { %>
-                            <div class="col-md-3"><%= service.service_name %></div>
-                            <div class="col-md-3"><%= service.price %></div>
-                            <div class="col-md-3"><%= service.description %></div>
-                            <div class="col-md-3"><%= service.other_info %></div>
+      <div class="row">     
+        <div class="container mt-2">
+            <h1>User Inquiries</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User Email</th>
+                        <th>Service Name</th>
+                        <th>Service Price</th>
+                        <th>Service Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <% const userServices = services.filter(service => service.user.toString() === user._id.toString()); %>
+                        <% userServices.forEach(service => { %>
+                            <tr>
+                                <td><%= user.email %></td>
+                                <td><%= service.service_name %></td>
+                                <td><%= service.price %></td>
+                                <td><%= service.description %></td>
+                            </tr>
                         <% }); %>
-                    </div>
-                    <!-- Add more rows as needed -->
-                </div>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        
+                
+                     
         </div>
   
       </div>
