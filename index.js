@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
@@ -59,14 +61,14 @@ app.set('views', './views');
 app.use(session({
     name: 'ThinkitToday',
     // todo change secret before 
-    secret:'boloharharmahadevkijay',
+    secret:'1171d635c0d105bb9518ce16bb962323hardiljopyaarkaarega',
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge : (1000 * 60 * 100)
     },
     store: MongoStore.create({
-            mongoUrl:'mongodb://localhost/talentshipglobal',
+            mongoUrl:'process.env.MONGODB_URI',
             autoRemove:"disabled"
   	  },
     function(err){
