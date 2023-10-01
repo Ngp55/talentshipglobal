@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
@@ -68,7 +66,7 @@ app.use(session({
         maxAge : (1000 * 60 * 100)
     },
     store: MongoStore.create({
-            mongoUrl:'process.env.MONGODB_URI',
+            mongoUrl:'mongodb+srv://asdfrajkumar1122:UIfvIeGADP7LG5yD@cluster0.1tprpsp.mongodb.net/?retryWrites=true&w=majority',
             autoRemove:"disabled"
   	  },
     function(err){
@@ -85,7 +83,7 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 //Using express router
 app.use('/', require('./routes'));
-
+//console.log(process.env)
 
 app.listen(port , function(error){
     if(error){

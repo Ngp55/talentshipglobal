@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', false);
 
-const url = `process.env.MONGODB_URI`;
+const url = `mongodb+srv://asdfrajkumar1122:UIfvIeGADP7LG5yD@cluster0.1tprpsp.mongodb.net/?retryWrites=true&w=majority`;
 
 const connectionParams={
     useNewUrlParser: true,
